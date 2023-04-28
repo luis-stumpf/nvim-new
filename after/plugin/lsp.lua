@@ -40,7 +40,27 @@ lsp.on_attach(function(client, bufnr)
 end)
 
 
+
+lsp.format_on_save({
+  format_opts = {
+    timeout_ms = 10000,
+  },
+  servers = {
+    ['null-ls'] = { 'javascript', 'typescript', 'gitcommit' }
+  }
+})
+
 lsp.setup()
+
+local null_ls = require("null-ls")
+
+null_ls.setup({
+  sources = {
+    null_ls.builtins.diagnostics.eslint,
+    null_ls.builtins.formatting.commitlint,
+  },
+})
+
 
 vim.diagnostic.config({
   virtual_text = true
