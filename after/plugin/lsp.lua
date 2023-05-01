@@ -10,7 +10,6 @@ lsp.ensure_installed({
   'rust_analyzer',
   'html',
   'tsserver',
-  'eslint'
 })
 
 lsp.set_preferences({
